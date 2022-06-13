@@ -1,0 +1,24 @@
+		// costom dialog box
+
+
+ final AlertDialog.Builder alert= new AlertDialog.Builder(this);
+        View view = getLayoutInflater().inflate(R.layout.dialog_box,null);
+
+        TextView edit = view.findViewById(R.id.edit);
+        TextView delete = view.findViewById(R.id.delete);
+
+        alert.setView(view);
+
+        final AlertDialog alertDialog = alert.create();
+        alertDialog.setCanceledOnTouchOutside(true);
+
+        edit.setOnClickListener(v -> {
+            Toast.makeText(this, "edit", Toast.LENGTH_SHORT).show();
+            alertDialog.dismiss();
+        });
+
+        delete.setOnClickListener(v -> {
+            Toast.makeText(this, "delete", Toast.LENGTH_SHORT).show();
+            alertDialog.dismiss();
+        });
+        alertDialog.show();
