@@ -1,5 +1,4 @@
-		// costom dialog box
-
+// costom dialog box in Activity
 
  final AlertDialog.Builder alert= new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.dialog_box,null);
@@ -22,3 +21,42 @@
             alertDialog.dismiss();
         });
         alertDialog.show();
+	
+	
+	
+	
+	
+	//Costom dialog box in RecyclerView Adapter
+	
+	
+                AlertDialog.Builder alert= new AlertDialog.Builder(v.getRootView().getContext());
+                View view =LayoutInflater.from(v.getRootView().getContext()).inflate(R.layout.share_dialog_box,null);
+
+                TextView shareText = view.findViewById(R.id.shareText);
+                TextView shareImage = view.findViewById(R.id.shareImage);
+
+                alert.setView(view);
+
+                final AlertDialog alertDialog = alert.create();
+                alertDialog.setCanceledOnTouchOutside(true);
+
+                shareText.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent share = new Intent(Intent.ACTION_SEND);
+                        share.setType("text/plane");
+                        share.putExtra(Intent.EXTRA_TEXT, holder.textView.getText().toString());
+                        context.startActivity(share);
+                        alertDialog.dismiss();
+                    }
+                });
+                shareImage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        share(holder.jk);
+                        alertDialog.dismiss();
+                    }
+                });
+                alertDialog.show();
+
+            }
