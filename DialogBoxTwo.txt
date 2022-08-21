@@ -53,7 +53,7 @@
                 shareImage.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        share(holder.jk);
+                        //Action 
                         alertDialog.dismiss();
                     }
                 });
