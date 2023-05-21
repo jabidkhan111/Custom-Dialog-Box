@@ -1,5 +1,4 @@
-// costom dialog box in Activity
-
+//Java
  final AlertDialog.Builder alert= new AlertDialog.Builder(this);
         View view = getLayoutInflater().inflate(R.layout.dialog_box,null);
 
@@ -22,13 +21,31 @@
         });
         alertDialog.show();
 	
+//Kotlin
+
+	val alert = AlertDialog.Builder(this)
+        val view = layoutInflater.inflate(R.layout.custom_dialog_box, null)
+
+        val edit = view.findViewById<TextView>(R.id.dialogCancel)
+        val delete = view.findViewById<TextView>(R.id.dialogDelete)
+
+        alert.setView(view)
+
+        val alertDialog = alert.create()
+        alertDialog.setCanceledOnTouchOutside(true)
+
+        edit.setOnClickListener {
+            alertDialog.dismiss()
+        }
+        delete.setOnClickListener {
+            Toast.makeText(this, "delete", Toast.LENGTH_SHORT).show()
+            alertDialog.dismiss()
+        }
+        alertDialog.show()
+
 	
-	
-	
-	
-	//Costom dialog box in RecyclerView Adapter
-	
-	
+//RecyclerView
+
                 AlertDialog.Builder alert= new AlertDialog.Builder(v.getRootView().getContext());
                 View view =LayoutInflater.from(v.getRootView().getContext()).inflate(R.layout.share_dialog_box,null);
 
